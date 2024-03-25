@@ -1,17 +1,19 @@
 from lexer import preprocess, tokenize 
 
 def getFile(filename):
-    lines = [] 
+    text = "" 
     try:
         with open(filename) as f:
-           lines = f.readlines() 
+            text = f.read()
     except Exception as e:
         exit(f"Error occurred reading file: {e}")
-    return lines 
+    return text 
 
-fLines = getFile("test-files/headings_test.md")
-newLines = preprocess(fLines)
+text = getFile("test-files/headings_test.md")
+preprocessedText = preprocess(text)
+tokens = tokenize(preprocessedText)
 
-# print(newLines)
+print([preprocessedText])
+print(tokens)
 
 

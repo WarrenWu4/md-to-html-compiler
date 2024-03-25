@@ -6,15 +6,43 @@ todo:
 """
 removes irrelevant characters in text before tokenizing
 """
-def preprocess(lines):
-    while (lines[0].strip(" ") == "\n"):
-        lines.pop(0)
-    while (lines[-1].strip(" ") == "\n"):
-        lines.pop()
-    return lines   
+def preprocess(text):
+    startIndex = 0
+    endIndex = -1 
+    while (text[startIndex] == "\n" or text[startIndex] == " "):
+        startIndex += 1
+    while (text[endIndex] == "\n" or text[endIndex] == " "):
+        endIndex -= 1
+    return text[startIndex:endIndex+1] 
 
-def tokenize(lines):
-    pass
+"""
+identifies special characters
+"""
+def tokenize(text):
+    tokens = []
+    currToken = ""
+    for char in text:
+        if (char == "\n"):
+            storeToken(currToken, tokens)
+            tokens.append("\n")
+        elif (char == " " and currToken != ""):
+            tokens.append(currToken)
+            currToken = ""
+        else:
+            currToken += char
+
+    return tokens
+
+"""
+helper function for tokenize
+"""
+def storeToken(currToken, tokens):
+    if (currToken != ""):
+        tokens.append(currToken)
+        currToken = ""
+
+
+    
 
 
 
