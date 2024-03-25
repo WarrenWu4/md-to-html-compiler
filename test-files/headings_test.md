@@ -1,3 +1,6 @@
+
+    
+
 # good heading 1
 
 ## good heading 2
@@ -29,8 +32,6 @@ with bad spacing
 good spacing with
 
 # heading 1
-
-
 
 
 
